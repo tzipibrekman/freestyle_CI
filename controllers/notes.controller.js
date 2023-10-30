@@ -37,6 +37,7 @@ notesCtrl.renderNotes = (req, res) => {
       notes.forEach(function (item) {
         var date = moment(item.createdAt, "YYYYMMDD").fromNow();
         item.date = date
+        item.status ="true"
       });
       res.render("notes/all-notes", { notes });
     }).catch(err => {
@@ -103,7 +104,7 @@ function myFirstFunction(data, callback) {
     });
 }
 function mySecondFunction(data, callback) {
-  User.find({}, { name: 1 }).limit(10).lean()
+  User.find({}, { name: 1 }).limit(10)
     .then(users => {
       let obj = {
         note: data,
